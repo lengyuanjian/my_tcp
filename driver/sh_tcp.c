@@ -20,7 +20,7 @@ static unsigned int capture_packet(void *priv, struct sk_buff *skb, const struct
         ip_header = (struct iphdr *)skb_network_header(skb);
         
         /* Print the source and destination IP addresses */
-        printk(KERN_INFO "Captured packet: %pI4 -> %pI4\n", &ip_header->saddr, &ip_header->daddr);
+        printk(KERN_INFO "Captured packet: %pI4 -> %pI4  len:%d\n", &ip_header->saddr, &ip_header->daddr,cpu_to_be16(ip_header->tot_len));
     }
     
     /* Continue processing the packet */
